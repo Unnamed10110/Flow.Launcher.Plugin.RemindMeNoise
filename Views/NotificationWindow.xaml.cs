@@ -1,6 +1,9 @@
 ﻿using System;
 using System.IO;
+using System.Windows;
 using System.Windows.Media.Imaging;
+using System.Media;
+using System.Threading.Tasks;
 
 namespace Flow.Launcher.Plugin.RemindMe.Views;
 
@@ -16,6 +19,9 @@ public partial class NotificationWindow {
         NotificationSubtitle = subtitle;
 
         InitializeComponent();
+        
+        // Add sound when window loads
+        Loaded += NotificationWindow_Loaded;
 
         try {
             var dllDirectory = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
@@ -23,6 +29,19 @@ public partial class NotificationWindow {
             Icon = new BitmapImage(new Uri(iconPath));
         } catch {
             // Ignore exceptions, use default icon
+        }
+    }
+    
+    private async void NotificationWindow_Loaded(object sender, RoutedEventArgs e) {
+        try {
+            // Play system notification sound three times
+            for (int i = 0; i < 3; i++) {
+                SystemSounds.Asterisk.Play();
+                if (i < 2) // Don't wait after the last sound
+                    await Task.Delay(1000); // 1000ms delay between sounds
+            }
+        } catch {
+            // Ignore exceptions if sound fails to play
         }
     }
 }

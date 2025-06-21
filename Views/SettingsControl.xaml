@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              DataContext="{Binding RelativeSource={RelativeSource Self}, Path=Settings}" mc:Ignorable="d"
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="600" d:DesignWidth="600">
     <StackPanel Orientation="Vertical" Margin="70 10 30 10">
         <CheckBox
             Content="Show notifications when adding or deleting reminders"
@@ -23,7 +23,7 @@
         />
         <TextBlock
             Text="If checked, will also accept reminders in the form of &quot;5m take the food out of the freezer&quot; in addition to &quot;add in 5 minutes to take the food out of the freezer&quot;"
-            FontSize="12"
+            FontSize="24"
         />
     </StackPanel>
 </UserControl>

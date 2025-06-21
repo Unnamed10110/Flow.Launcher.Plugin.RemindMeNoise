@@ -137,15 +137,22 @@ public partial class Main : IPlugin, ISettingProvider {
     private List<Result> GetAddReminderResponse(string queryKeyword, string search) {
         var split = search.Split(" to ", 2);
         Span when;
-        try {
-            when = _parser.Parse(split[0]);
-        } catch {
-            return new List<Result> {
-                new() {
-                    Title = "Couldn't parse the time",
-                    IcoPath = IcoPath,
-                },
-            };
+        
+        // First try to parse the specific format "dd/MM/yy, HH:mm"
+        if (TryParseDateTimeFormat(split[0], out var parsedDateTime)) {
+            when = new Span(parsedDateTime, parsedDateTime);
+        } else {
+            // Fall back to existing ChronicNetCore parser
+            try {
+                when = _parser.Parse(split[0]);
+            } catch {
+                return new List<Result> {
+                    new() {
+                        Title = "Couldn't parse the time",
+                        IcoPath = IcoPath,
+                    },
+                };
+            }
         }
 
         if (string.IsNullOrEmpty(search)) {
@@ -177,6 +184,22 @@ public partial class Main : IPlugin, ISettingProvider {
                 Action = CreateAddReminderAction(queryKeyword, reason, when),
             },
         };
+    }
+
+    private static bool TryParseDateTimeFormat(string dateTimeString, out DateTime result) {
+        result = DateTime.MinValue;
+        
+        // Try to parse "dd/MM/yy, HH:mm" format
+        if (DateTime.TryParseExact(dateTimeString.Trim(), 
+            new[] { "dd/MM/yy, HH:mm", "dd/MM/yyyy, HH:mm", "dd/MM/yy,HH:mm", "dd/MM/yyyy,HH:mm" },
+            CultureInfo.InvariantCulture, 
+            DateTimeStyles.None, 
+            out var parsedDate)) {
+            result = parsedDate;
+            return true;
+        }
+        
+        return false;
     }
 
     private Func<ActionContext,bool> CreatePutExamplePromptAction(string queryKeyword) {
