@@ -8,6 +8,8 @@ This adds the following functions:
 
 # Examples (I use "rm add" as shortcut, the default is "reminder add")
 
+![image](https://github.com/user-attachments/assets/161e6ff2-9a3c-4da2-868c-d4dd172dd9ea)
+
 ![EPef9ysBL6](https://github.com/user-attachments/assets/17ae88d7-e797-4a99-bbbc-5025de9631b6)
 
 ![GoeqVhESZj](https://github.com/user-attachments/assets/8f9f645f-9006-4a27-a8d0-6f54fd69e9c9)
