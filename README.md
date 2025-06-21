@@ -1,4 +1,4 @@
-# Remind me
+# Remind me Noisy
 
 This is a mod of the plugin RemindMe for Flow Launcher.
 This adds the following functions:
