@@ -21,3 +21,11 @@ This adds the following functions:
 - Another use:
 
 ![image](https://github.com/user-attachments/assets/16d1725d-7ef4-48d4-a434-b65fdf0e3379)
+
+- Confirmation (with different time)
+
+![image](https://github.com/user-attachments/assets/51a3daf3-f3ff-4ebb-b39d-eb1a5610880e)
+
+- Always on top pop up
+
+![image](https://github.com/user-attachments/assets/a96542e6-6cb3-4fe3-af92-9269afd05fdf)
