@@ -18,3 +18,6 @@ This adds the following functions:
 
 ![q4hISkc52W](https://github.com/user-attachments/assets/bd34755c-3668-4fb6-b1b3-d998272954df)
 
+- Another use:
+
+![image](https://github.com/user-attachments/assets/16d1725d-7ef4-48d4-a434-b65fdf0e3379)
