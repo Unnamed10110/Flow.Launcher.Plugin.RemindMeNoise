@@ -38,7 +38,7 @@ public partial class NotificationWindow {
             for (int i = 0; i < 3; i++) {
                 SystemSounds.Asterisk.Play();
                 if (i < 2) // Don't wait after the last sound
-                    await Task.Delay(1000); // 1000ms delay between sounds
+                    await Task.Delay(2000); // 2000ms delay between sounds
             }
         } catch {
             // Ignore exceptions if sound fails to play
